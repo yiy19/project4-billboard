@@ -7,6 +7,7 @@ output: html_document
 ```{r library}
 library(tidyverse) 
 library(skimr)
+library(glue)
 ```
 
 ### Read in data
@@ -14,36 +15,42 @@ library(skimr)
 billboard <- read_csv("data/billboard.csv")
 ```
 
-### Data from a glance
+### Data inspection and manipulation
 ```{r inspect-data}
 billboard <- billboard %>% 
-  mutate(last = as.numeric(last))
+  mutate(last = as.numeric(last),
+         artisttitle = paste0(artist, "::", title))
 skim(billboard)
+
 
 ```
 
 
 Songs on the Billboard Hot 200 chart hit the 14th on the chart as the peak rank on average. They also stay on the chart for 137 weeks on average. However, the standard deviations are very large.
 
+### What I learned
+What I learned is that I need to ask myself this question: "What data do I have? And what are some interesting questions I can answer with the data that I can represent in a legible way?"
+
+Following that question I could lead myself to think that given I have that the Billboard's top 200 songs, which is too many, I could narrow it down to a list of 10. One criterion for determining that list could be the longest. 
 
 ### Top 10 songs that have been on the chart for the longest
 ```{r top-10-songs}
 billboard %>% 
   arrange(desc(week)) %>% 
   slice_head(n = 25) %>% 
-  ggplot(aes(x = week, y = artist)) +
+  ggplot(aes(x = week, y = title)) +
   geom_bar(stat = "identity", fill = "sky blue") +
   labs(
     x = "Weeks on Billboard Hot 200",
-    y = "Artist"
+    y = "Albums"
   ) +
   theme_minimal()
-
 ```
+This graph was looking strange with the Greatest Hits having more than 2000 weeks in a row. Data inspection told me that there was something wrong. It seemed that the albums with the same title "Greatest Hits" released by different artists were merged into one item on the graph. I needed to differentiate different artists' "Greatest Hits." In order to do that, I added a variable pasting the artist name and album title together. 
 
 
 
-What I learned is that I need to ask myself this question: "What data do I have? And what are some interesting questions I can answer with the data that I can represent in a legible way?"
 
-Following that question I could lead myself to think that given I have that the Billboard's top 200 songs, which is too many, I could narrow it down to a list of 10. One criterion for determining that list could be the longest. 
+
+
 
