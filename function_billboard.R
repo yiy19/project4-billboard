@@ -1,11 +1,9 @@
 library(tidyverse)
 library(rvest)
 
-page <- read_html("https://www.billboard.com/charts/billboard-200")
 
-titles <- page %>%
-  html_nodes(".chart-element__information__song") %>%
-  html_text() 
+url <- "https://www.billboard.com/charts/billboard-200"
+
 
 scrape_page <- function(url){
   
@@ -39,7 +37,7 @@ scrape_page <- function(url){
     html_text() 
   
   # create and return tibble
-  tibble(
+  billboard <- tibble(
     title = titles, 
     artist = artists,
     last = last,
