@@ -33,24 +33,58 @@ What I learned is that I need to ask myself this question: "What data do I have?
 
 Following that question I could lead myself to think that given I have that the Billboard's top 200 songs, which is too many, I could narrow it down to a list of 10. One criterion for determining that list could be the longest. 
 
-### Top 10 songs that have been on the chart for the longest
-```{r top-10-songs}
+### Top 25 albums that have been on the chart for the longest
+```{r top-10-albums}
 billboard %>% 
   arrange(desc(week)) %>% 
   slice_head(n = 25) %>% 
   ggplot(aes(x = week, y = title)) +
   geom_bar(stat = "identity", fill = "sky blue") +
   labs(
+    title = "25 Albums with the Longest Streak on Billboard Hot 200",
     x = "Weeks on Billboard Hot 200",
     y = "Albums"
   ) +
   theme_minimal()
 ```
+
+
 This graph was looking strange with the Greatest Hits having more than 2000 weeks in a row. Data inspection told me that there was something wrong. It seemed that the albums with the same title "Greatest Hits" released by different artists were merged into one item on the graph. I needed to differentiate different artists' "Greatest Hits." In order to do that, I added a variable pasting the artist name and album title together. 
 
 
+### Top 10 albums that have been on the chart for the longest
+```{r top-10-albums-corrected, fig.height=5, fig.width=11.5}
+
+billboard %>% 
+  arrange(desc(week)) %>% 
+  slice_head(n = 10) %>% 
+  ggplot(aes(x = week, y = artisttitle)) +
+  geom_bar(stat = "identity", fill = "sky blue") +
+  labs(
+    title = "Top 10 albums with the Longest Streak on Billboard Hot 200",
+    x = "Weeks on Billboard Hot 200",
+    y = "Artist::Album"
+  ) +
+  theme_minimal()
+
+```
 
 
+The plot with 25 albums looked really crowded, so I decided to include only the 10 albums.
 
 
-
+### Artists with the most albums on the chart
+```{r artists-most-albums, eval = FALSE}
+billboard %>% 
+  count(artist) %>% 
+  arrange(desc(n)) %>% 
+  slice_head(n = 10) %>% 
+  ggplot(aes(x = n, y = artist)) +
+  geom_bar(stat = "identity", fill = "sky blue") +
+  labs(
+    title = "Taylor Swift and Drake have the Most Albums on Billboard Hot 200",
+    y = "Artists",
+    x = "Number of Albums on Billboard Hot 200"
+  )
+  theme_minimal()  
+```
