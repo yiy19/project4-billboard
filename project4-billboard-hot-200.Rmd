@@ -25,3 +25,25 @@ skim(billboard)
 
 Songs on the Billboard Hot 200 chart hit the 14th on the chart as the peak rank on average. They also stay on the chart for 137 weeks on average. However, the standard deviations are very large.
 
+
+### Top 10 songs that have been on the chart for the longest
+```{r top-10-songs}
+billboard %>% 
+  arrange(desc(week)) %>% 
+  slice_head(n = 25) %>% 
+  ggplot(aes(x = week, y = artist)) +
+  geom_bar(stat = "identity", fill = "sky blue") +
+  labs(
+    x = "Weeks on Billboard Hot 200",
+    y = "Artist"
+  ) +
+  theme_minimal()
+
+```
+
+
+
+What I learned is that I need to ask myself this question: "What data do I have? And what are some interesting questions I can answer with the data that I can represent in a legible way?"
+
+Following that question I could lead myself to think that given I have that the Billboard's top 200 songs, which is too many, I could narrow it down to a list of 10. One criterion for determining that list could be the longest. 
+
