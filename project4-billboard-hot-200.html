@@ -196,6 +196,9 @@ pre code {
 </div>
 <div id="data-from-a-glance" class="section level3">
 <h3>Data from a glance</h3>
+<pre class="r"><code>billboard &lt;- billboard %&gt;% 
+  mutate(last = as.numeric(last))</code></pre>
+<pre><code>## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion</code></pre>
 <pre class="r"><code>skim(billboard)</code></pre>
 <table>
 <caption>Data summary</caption>
@@ -222,11 +225,11 @@ pre code {
 </tr>
 <tr class="even">
 <td align="left">character</td>
-<td align="left">3</td>
+<td align="left">2</td>
 </tr>
 <tr class="odd">
 <td align="left">numeric</td>
-<td align="left">2</td>
+<td align="left">3</td>
 </tr>
 <tr class="even">
 <td align="left">________________________</td>
@@ -273,16 +276,6 @@ pre code {
 <td align="right">150</td>
 <td align="right">0</td>
 </tr>
-<tr class="odd">
-<td align="left">last</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">3</td>
-<td align="right">0</td>
-<td align="right">183</td>
-<td align="right">0</td>
-</tr>
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
@@ -304,9 +297,22 @@ pre code {
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">last</td>
+<td align="right">18</td>
+<td align="right">0.91</td>
+<td align="right">97.89</td>
+<td align="right">57.23</td>
+<td align="right">1</td>
+<td align="right">48.25</td>
+<td align="right">97.5</td>
+<td align="right">146.75</td>
+<td align="right">200</td>
+<td align="left">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
 <td align="left">peak</td>
 <td align="right">0</td>
-<td align="right">1</td>
+<td align="right">1.00</td>
 <td align="right">13.81</td>
 <td align="right">33.19</td>
 <td align="right">1</td>
@@ -316,10 +322,10 @@ pre code {
 <td align="right">191</td>
 <td align="left">▇▁▁▁▁</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">week</td>
 <td align="right">0</td>
-<td align="right">1</td>
+<td align="right">1.00</td>
 <td align="right">136.60</td>
 <td align="right">146.89</td>
 <td align="right">1</td>
@@ -331,18 +337,7 @@ pre code {
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>glimpse(billboard)</code></pre>
-<pre><code>## Rows: 200
-## Columns: 5
-## $ title  &lt;chr&gt; &quot;Dangerous: The Double Album&quot;, &quot;Shoot For The Stars Aim For The…
-## $ artist &lt;chr&gt; &quot;Morgan Wallen&quot;, &quot;Pop Smoke&quot;, &quot;Pooh Shiesty&quot;, &quot;The Weeknd&quot;, &quot;Li…
-## $ last   &lt;chr&gt; &quot;1&quot;, &quot;3&quot;, &quot;4&quot;, &quot;163&quot;, &quot;5&quot;, &quot;8&quot;, &quot;7&quot;, &quot;6&quot;, &quot;-&quot;, &quot;9&quot;, &quot;-&quot;, &quot;-&quot;, &quot;…
-## $ peak   &lt;dbl&gt; 1, 1, 3, 1, 2, 4, 1, 1, 9, 1, 11, 12, 1, 1, 15, 2, 1, 2, 3, 9, …
-## $ week   &lt;dbl&gt; 9, 36, 5, 51, 12, 49, 54, 19, 1, 70, 1, 1, 35, 79, 1, 5, 15, 16…</code></pre>
 <p>Songs on the Billboard Hot 200 chart hit the 14th on the chart as the peak rank on average. They also stay on the chart for 137 weeks on average. However, the standard deviations are very large.</p>
-</div>
-<div id="section" class="section level3">
-<h3></h3>
 </div>
 
 

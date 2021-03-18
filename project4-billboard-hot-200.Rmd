@@ -16,13 +16,12 @@ billboard <- read_csv("data/billboard.csv")
 
 ### Data from a glance
 ```{r inspect-data}
-
+billboard <- billboard %>% 
+  mutate(last = as.numeric(last))
 skim(billboard)
-glimpse(billboard)
 
 ```
 
 
 Songs on the Billboard Hot 200 chart hit the 14th on the chart as the peak rank on average. They also stay on the chart for 137 weeks on average. However, the standard deviations are very large.
 
-### 
