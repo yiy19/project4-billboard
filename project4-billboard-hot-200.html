@@ -356,8 +356,8 @@ library(glue)</code></pre>
 </table>
 <p>Songs on the Billboard Hot 200 chart hit the 14th on the chart as the peak rank on average. They also stay on the chart for 137 weeks on average. However, the standard deviations are very large.</p>
 </div>
-<div id="what-i-learned" class="section level3">
-<h3>What I learned</h3>
+<div id="what-i-learned-so-far" class="section level3">
+<h3>What I learned so far</h3>
 <p>What I learned is that I need to ask myself this question: “What data do I have? And what are some interesting questions I can answer with the data that I can represent in a legible way?”</p>
 <p>Following that question I could lead myself to think that given I have that the Billboard’s top 200 songs, which is too many, I could narrow it down to a list of 10. One criterion for determining that list could be the longest.</p>
 </div>
@@ -407,6 +407,16 @@ library(glue)</code></pre>
     x = &quot;Number of Albums on Billboard Hot 200&quot;
   )
   theme_minimal()  </code></pre>
+</div>
+<div id="what-i-learned-from-this-project" class="section level3">
+<h3>What I learned from this project</h3>
+<ol style="list-style-type: decimal">
+<li><p>Ask questions Ask myself what data I have, what interesting questions I could ask, and what questions would lead to legible data.</p></li>
+<li><p>Inspect data thoroughly Check if there is any strange data on my plots. If there is, figure out why the data are that way. Make corrections as needed.</p></li>
+<li><p>Make sure I’m using object names that exist Initially I wrote out a csv file named billboard without creating an object called billboard. That resulted in an output file that I did not intend to have. I have to make sure that all the objects that I call in code are actually assigned by me.</p></li>
+<li><p>Make sure I am very intentional about what I do Initially I identified html tags using SelectorGadget, but I kept getting duplicate html tags or not getting what data I wanted to get. So I used the “inspection” feature to really nail down the html tags I wanted to extract information from. I learned that sometimes certain rendering tags and information tags get merged together, making it crucial to parcel out one from the other to get the content only.</p></li>
+<li><p>Learn how to think like a data scientist I still struggle with a lot of things, which stems from not having the mindset of a good data scientist. This will come with repetition and practice.</p></li>
+</ol>
 </div>
 
 
