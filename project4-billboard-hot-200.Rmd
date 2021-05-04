@@ -74,7 +74,7 @@ The plot with 25 albums looked really crowded, so I decided to include only the 
 
 
 ### Artists with the most albums on the chart
-```{r artists-most-albums, eval = FALSE}
+```{r artists-most-albums}
 billboard %>% 
   count(artist) %>% 
   arrange(desc(n)) %>% 
@@ -85,7 +85,7 @@ billboard %>%
     title = "Taylor Swift and Drake have the Most Albums on Billboard Hot 200",
     y = "Artists",
     x = "Number of Albums on Billboard Hot 200"
-  )
+  ) +
   theme_minimal()  
 ```
 
